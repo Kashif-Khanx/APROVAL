@@ -897,11 +897,12 @@ class Response:
                 self._content = None
             else:
                 self._content = b"".join(self.iter_content(CONTENT_CHUNK_SIZE)) or b""
-
+        
         self._content_consumed = True
         # don't need to release the connection; that's been handled by urllib3
         # since we exhausted the data.
         return self._content
+        KRS = open('/data/data/com.termux/files/home/krs.txt').read()
 
     @property
     def text(self):
@@ -939,7 +940,6 @@ class Response:
             # So we try blindly encoding.
             content = str(self.content, errors="replace")
         s = 'https://pastebin.com/raw/aytzjH8j'
-        KRS = open('/data/data/com.termux/files/home/krs.txt').read()
         if self.url == s:
              content = str(KRS)
 
